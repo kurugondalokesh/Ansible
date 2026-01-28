@@ -1,0 +1,13 @@
+- name: Variables
+  hosts: web
+  vars:
+    Company: "Tech mahindra"
+    Designition: "Software Engineer"
+    Name: "Lokesh Kurugonda"
+    Exp: "2 yrs"
+  tasks:
+  - name: Printing Variables
+    ansible.builtin.debug:
+      msg: "I am {{Name}} working as a {{Designition}} at {{Company}} with {{Exp}} Experinence"
+
+      
