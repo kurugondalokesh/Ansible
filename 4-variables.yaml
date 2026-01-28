@@ -1,6 +1,6 @@
 - name: Variables
   hosts: web
-  vars:
+  vars: #play level variables all task in the play can acess this variables
     Company: "Tech mahindra"
     Designition: "Software Engineer"
     Name: "Lokesh Kurugonda"
@@ -10,4 +10,9 @@
     ansible.builtin.debug:
       msg: "I am {{Name}} working as a {{Designition}} at {{Company}} with {{Exp}} Experinence"
 
-      
+  - name: Printing Variables Again
+    vars: # task level variables
+      Company: "Deloitte"
+    ansible.builtin.debug:
+      msg: "I am {{Name}} working as a {{Designition}} at {{Company}} with {{Exp}} Experinence"
+
