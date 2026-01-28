@@ -6,7 +6,7 @@
       msg: "This is play 1 and task 1"
 
 - name: PLay 2
-  hists: web
+  hosts: web
   tasks:
   - name: Play 2 task 1
     ansible.builtin.debug:
