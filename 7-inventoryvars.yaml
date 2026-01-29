@@ -5,9 +5,4 @@
     ansible.builtin.debug:
       msg: "I am {{Name}} working as a {{Designition}} at {{Company}} with {{Exp}} Experinence"
 
-  - name: Printing Variables Again
-    vars: # task level variable it will override the play level variable
-      Company: "Deloitte"
-    ansible.builtin.debug:
-      msg: "I am {{Name}} working as a {{Designition}} at {{Company}} with {{Exp}} Experinence"
 
