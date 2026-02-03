@@ -1,0 +1,23 @@
+- name: Office learning information
+  hosts: local
+  vars:
+    designition: "Software Engineer"
+    exp: 2
+    working: true
+    skills:
+      - Ansible
+      - Python
+      - Linux
+      - AWS
+    tools:
+      ci: "Jenkins"
+      cm: "Ansible"
+      cloud: "AWS"
+      AWS:
+        compute: "EC2"
+        storage: "S3"
+        database: "RDS"
+  tasks:
+  - name: Print information
+    ansible.builtin.debug:
+      msg: "I am working as a {{designition}} with {{exp}} years of experience. Working status: {{working}}. My skills include {{skills}}. I use {{tools.ci}} for CI, {{tools.cm}} for configuration management, and {{tools.cloud}} for cloud services. In AWS, I work with {{tools.AWS.compute}}, {{tools.AWS.storage}}, and {{tools.AWS.database}}."

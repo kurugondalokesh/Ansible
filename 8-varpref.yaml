@@ -1,0 +1,15 @@
+- name: Variable prompt
+  hosts: web
+  vars_prompt:
+  - name: Name
+    prompt: Please enter your name
+  - name: Designition
+    prompt: PLease enter your Designition
+  - name: Company
+    prompt: Please enter your company name
+  - name: Exp
+    prompt: Please enter your Experinence
+  tasks:
+  - name: var files
+    ansible.builtin.debug:
+      msg: "I am {{Name}} working as a {{Designition}} at {{Company}} with {{Exp}} Experinence"
