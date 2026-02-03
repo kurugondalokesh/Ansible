@@ -1,0 +1,13 @@
+- name: Loops in ansible
+  hosts: web
+  become: yes
+  tasks:
+  - name: Install multiple packages
+    ansible.builtin.package:
+      name: "{{ item.name }}"
+      state: "{{ item.state }}"
+    loop:
+      - { name: git, state: absent }
+      - { name: curl, state: absent }
+      - { name: vim, state: absent }
+      - { name: htop, state: absent }
