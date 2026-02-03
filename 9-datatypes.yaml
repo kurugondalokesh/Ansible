@@ -1,5 +1,6 @@
 - name: Office learning information
   hosts: local
+  connection: local
   vars:
     designition: "Software Engineer"
     exp: 2
