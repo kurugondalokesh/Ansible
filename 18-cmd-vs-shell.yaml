@@ -1,0 +1,10 @@
+- name: command vs shell
+  hosts: local
+  connection: local
+  tasks:
+  - name: using command
+    ansible.builtin.command: ls -ltr > /tmp/command.txt
+    ignore_errors: yes
+
+  - name: using shell
+    ansible.builtin.shell: ls -ltr > /tmp/shell.txt
