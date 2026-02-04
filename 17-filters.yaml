@@ -20,6 +20,6 @@
 
   - name: Checking IP
     vars:
-      myip: 123.1.21.2
+      myip: 323.1.21.2
     ansible.builtin.debug:
       msg: "{{ myip | ansible.utils.ipv4 }}"
