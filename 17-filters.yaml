@@ -22,4 +22,4 @@
     vars:
       myip: 123.1.21.2
     ansible.builtin.debug:
-      msg: "Hello {{ myip | ansible.utils.ipv4 }}"
+      msg: "{{ myip | ansible.utils.ipv4 }}"
