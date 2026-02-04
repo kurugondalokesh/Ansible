@@ -17,3 +17,9 @@
       name: lokesh KurugoDda
     ansible.builtin.debug:
       msg: "Hello {{ name | lower }}"
+
+  - name: Checking IP
+    vars:
+      myip: 123.1.21.2
+    ansible.builtin.debug:
+      msg: "Hello {{ myip | ansible.utils.ipv4 }}"
