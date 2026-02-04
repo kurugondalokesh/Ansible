@@ -1,0 +1,19 @@
+- name: demo yaml for filters
+  hosts: local
+  connection: local
+  tasks:
+  - name: using default
+    ansible.builtin.debug:
+      msg: "{{ variable | default('Lokesh') }}"
+  
+  - name: Converting to upper case
+    vars:
+      name: lokesh Kurugonda
+    ansible.builtin.debug:
+      msg: "Hello {{ name | upper }}"
+
+  - name: Converting to lower case
+    vars:
+      name: lokesh KurugoDda
+    ansible.builtin.debug:
+      msg: "Hello {{ name | lower }}"
