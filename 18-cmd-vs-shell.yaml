@@ -2,9 +2,13 @@
   hosts: local
   connection: local
   tasks:
-  - name: using command
+  - name: using command # command module does not process through a shell, so shell features like redirection (>) won't work unless you explicitly invoke a shell.
     ansible.builtin.command: ls -ltr > /tmp/command.txt
     ignore_errors: yes
 
-  - name: using shell
+  - name: using shell # shell module processes the command through a shell, so shell features like redirection (>) will work as expected.
     ansible.builtin.shell: ls -ltr > /tmp/shell.txt
+
+    #shell can access environment variables, pipes, and other shell-specific features.
+    #command module cannot access these features directly.
+    #command is generally safer and more efficient for simple commands that don't require shell features, while shell is more flexible for complex commands that do.

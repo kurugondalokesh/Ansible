@@ -1,0 +1,21 @@
+- name: create ec2 servers
+  hosts: local
+  connection: local
+  vars:
+    subnet_id: subnet-0108aae1bbb249c58
+    sg_id: sg-0a85f1d5ba9192ffc
+    ami: ami-0220d79f3f480ecf5
+    instances:
+    - mysql
+    - backend
+    - frontend
+  tasks:
+  - name: launch ec2 instance
+    amazon.aws.ec2_instance:
+      name: "{{ item }}"
+      vpc_subnet_id: "{{ subnet_id }}"
+      instance_type: t3.micro
+      security_group: "{{ sg_id }}"
+      image_id: "{{ ami }}"
+    loop: "{{ instances }}"
+    register: ec2_instances
