@@ -43,7 +43,7 @@
       zone: "{{ zone }}"
       type: A
       ttl: 1
-      record: "{{ item.item }}.{{ zone }}"
+      record: "{{ zone }}"
       value: "{{ item.instances[0].public_ip_address }}"
       overwrite: yes
     loop: "{{ ec2_instances.results }}"
