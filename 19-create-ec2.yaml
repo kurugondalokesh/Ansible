@@ -39,12 +39,12 @@
 
 - name: Create r53 public record for users
   amazon.aws.route53:
-    state: present
-    zone: "{{ zone }}"
-    type: A
-    ttl: 1
-    record: "{{ item.item }}.{{ zone }}"
-    value: "{{ item.instances[0].public_ip_address }}"
-    overwrite: yes
+      state: present
+      zone: "{{ zone }}"
+      type: A
+      ttl: 1
+      record: "{{ item.item }}.{{ zone }}"
+      value: "{{ item.instances[0].public_ip_address }}"
+      overwrite: yes
   loop: "{{ ec2_instances.results }}"
   when: item.item == "frontend"
