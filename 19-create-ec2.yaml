@@ -22,9 +22,9 @@
     register: ec2_instances
 
 
-  - name: print the ec2 instance information
-    ansible.builtin.debug:
-      msg: "{{ ec2_instances }}"
+  # - name: print the ec2 instance information
+  #   ansible.builtin.debug:
+  #     msg: "{{ ec2_instances }}"
 
   - name: Create r53 records
     amazon.aws.route53:
