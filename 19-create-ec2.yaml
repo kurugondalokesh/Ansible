@@ -9,6 +9,7 @@
     - mysql
     - backend
     - frontend
+    zone: lokiaws.online
   tasks:
   - name: launch ec2 instance
     amazon.aws.ec2_instance:
@@ -19,6 +20,18 @@
       image_id: "{{ ami }}"
     loop: "{{ instances }}"
     register: ec2_instances
+
+
   - name: print the ec2 instance information
     ansible.builtin.debug:
       msg: "{{ ec2_instances }}"
+
+  - name: Create r53 records
+    amazon.aws.route53:
+      state: present
+      zone: "{{ zone }}"
+      record: "{{ item.item }}.{{ zone }}"
+      type: A
+      ttl: 1
+      value: "{{ item.instances[0].private_ip_address }}"
+    loop: "{{ ec2_instances.results }}"
