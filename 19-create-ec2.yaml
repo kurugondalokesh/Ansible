@@ -2,7 +2,7 @@
   hosts: local
   connection: local
   vars:
-    subnet_id: subnet-0108aae1bbb249c58
+    subnet_id: subnet-0cb142f05c2e437cc
     sg_id: sg-0a85f1d5ba9192ffc
     ami: ami-0220d79f3f480ecf5
     instances:
@@ -11,6 +11,15 @@
     - frontend
     zone: lokiaws.online
   tasks:
+
+  - name: ansible install boto3 and botocore
+    ansible.builtin.pip:
+      name:
+      - boto3
+      - botocore
+      executable: pip3.9
+
+      
   - name: launch ec2 instance
     amazon.aws.ec2_instance:
       name: "{{ item }}"
